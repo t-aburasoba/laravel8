@@ -20,6 +20,12 @@
                             <input
                                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                 id="inline-first-name" type="text" value="" name="firstname" wire:model="firstname">
+                            @error('firstname')
+                                <span class="block sm:inline text-red-700">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            
                         </div>
                     </div>
                     <div class="md:flex md:items-center mb-6">
@@ -33,6 +39,9 @@
                             <input
                                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                 id="inline-last-name" type="text" placeholder="" name="lastname" wire:model="lastname">
+                                @error('lastname')
+                                    <span class="block sm:inline text-red-700">{{ $message }}</span>
+                                @enderror
                         </div>
                     </div>
                     <div class="md:flex md:items-center mb-6">
@@ -46,6 +55,9 @@
                             <input
                                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                 id="inline-email" type="text" placeholder="" name="email" wire:model="email">
+                                @error('email')
+                                    <span class="block sm:inline text-red-700">{{ $message }}</span>
+                                @enderror
                         </div>
                     </div>
                     <div class="md:flex md:items-center mb-6">
@@ -59,6 +71,9 @@
                             <input
                                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                                 id="inline-phone-number" type="text" placeholder="" name="phone" wire:model="phone">
+                                @error('phone')
+                                    <span class="block sm:inline text-red-700">{{ $message }}</span>
+                                @enderror
                         </div>
                     </div>
                     <div class="flex justify-end">
