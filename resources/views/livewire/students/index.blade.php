@@ -9,7 +9,7 @@
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">All Student</div>
             @include('livewire.students.create')
-            @include('livewire.students.update')
+            @include('livewire.students.edit')
         </div>
         <div class="px-6 pt-4 pb-2">
             <table class="table-auto w-full">
