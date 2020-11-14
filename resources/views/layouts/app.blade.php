@@ -23,7 +23,7 @@
             @livewire('navigation-dropdown')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
+            <header class="shadow bg-no-repeat bg-center bg-white h-64 bg-top bg-contain" style="background-image: url(https://res.cloudinary.com/dlalfv68e/image/upload/v1605104698/undraw_Navigation_re_wxx4_fsdedi.png)">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>

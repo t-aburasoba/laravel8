@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+        <h1 class="font-semibold text-3xl text-gray-800 leading-tight">Toileatter</h1>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+            {{ __('あなたの投稿が腹痛民を救います。') }}
         </h2>
+
     </x-slot>
 
     <div class="py-12">
