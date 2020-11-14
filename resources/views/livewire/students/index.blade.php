@@ -7,41 +7,28 @@
     @endif
     <div class="rounded overflow-hidden shadow-lg">
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">All Student</div>
+            <div class="font-bold text-xl mb-2">投稿一覧</div>
             @include('livewire.students.create')
             @include('livewire.students.edit')
         </div>
-        <div class="px-6 pt-4 pb-2">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2">First Name</th>
-                        <th class="px-4 py-2">Last Name</th>
-                        <th class="px-4 py-2">Email</th>
-                        <th class="px-4 py-2">Phone</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($students as $student)
-                        <tr>
-                            <td class="border px-4 py-2">{{ $student->firstname }}</td>
-                            <td class="border px-4 py-2">{{ $student->lastname }}</td>
-                            <td class="border px-4 py-2">{{ $student->email }}</td>
-                            <td class="border px-4 py-2">{{ $student->phone }}</td>
-                            <td class="border px-4 py-2">
-                                <button type="button" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" 
-                                wire:click.prevent="openUpdateModal({{ $student->id }})">編集</button>
-                            </td>
-                            <td class="border px-4 py-2">
-                                <button type="button" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                                wire:click.prevent="delete({{ $student->id }})">削除</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="px-6 pt-4 pb-2 flex flex-wrap">
+            @foreach ($students as $student)
+                <div class="lg:w-1/3 w-full rounded overflow-hidden shadow-lg p-3">
+                    <img class="w-full h-64 object-cover" src="{{ $student->image ? $student->getCloudinaryUrl($student->image) : 'https://res.cloudinary.com/dlalfv68e/image/upload/c_fit,h_200,w_200/ixs29bvg5hxia2uwdxlx.jpg' }}" alt="トイレの画像">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">{{ $student->lastname }}{{ $student->firstname }}</div>
+                            <p class="text-gray-700 text-base">
+                                email:{{ $student->email }}<br>
+                                phone:{{ $student->phone }}
+                            </p>
+                        </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

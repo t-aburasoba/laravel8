@@ -91,7 +91,7 @@
                                 @enderror
                                 @if ($image)
                                     画像のプレビュー:
-                                    <img src="{{ $image->temporaryUrl() }}">
+                                    <img src="{{ $image->temporaryUrl() }}" class="class="w-auto h-64"">
                                 @endif
                         </div>
                     </div>
