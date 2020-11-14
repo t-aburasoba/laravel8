@@ -1,12 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-semibold text-3xl text-gray-800 leading-tight">
+        <h1 class="font-semibold text-3xl text-gray-200 leading-tight">
             {{ __('あなたの投稿が腹痛民を救います。') }}
         </h1>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+        <h2 class="font-semibold text-xl text-gray-200 leading-tight mt-5">
             {{ __('Toileatter（トイレアッター）は駅構内のトイレを評価しシェアするアプリです。') }}
         </h2>
-
     </x-slot>
 
     <div class="py-12">

@@ -23,9 +23,11 @@
             @livewire('navigation-dropdown')
 
             <!-- Page Heading -->
-            <header class="shadow bg-no-repeat bg-center bg-white h-64 bg-top bg-contain" style="background-image: url(https://res.cloudinary.com/dlalfv68e/image/upload/v1605104698/undraw_Navigation_re_wxx4_fsdedi.png)">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+            <header class="shadow bg-white h-64 bg-top bg-contain" style="background-image: url(https://res.cloudinary.com/dlalfv68e/image/upload/v1605104698/undraw_Navigation_re_wxx4_fsdedi.png)">
+                <div class="h-64" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
                 </div>
             </header>
 

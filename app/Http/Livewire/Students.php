@@ -4,14 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use JD\Cloudder\Facades\Cloudder;
 
 class Students extends Component
 {
+    use WithFileUploads;
+
     public $ids;
     public $firstname;
     public $lastname;
     public $email;
     public $phone;
+    public $image;
+    public $pastImage;
     public $modalStatus;
     public $modalUpdateStatus;
 
@@ -34,6 +40,10 @@ class Students extends Component
         $this->lastname = $student->lastname;
         $this->email = $student->email;
         $this->phone = $student->phone;
+        $this->pastImage = Cloudder::secureShow($student->image, [
+            'width'     => 200,
+            'height'    => 200
+        ]);
         $this->modalUpdateStatus = true;
     }
 
@@ -48,6 +58,7 @@ class Students extends Component
         $this->lastname = '';
         $this->email = '';
         $this->phone = '';
+        $this->image = '';
     }
 
     public function store()
@@ -57,7 +68,15 @@ class Students extends Component
             'lastname' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+            'image' => 'image|max:1024',
         ]);
+
+        if ($this->image) {
+            $imagePath = $this->image->getRealPath();
+            Cloudder::upload($imagePath, null);
+            $publicId = Cloudder::getPublicId();
+            $validatedData['image']  = $publicId;
+        }
 
         Student::create($validatedData);
         session()->flash('message', '新規投稿に成功しました。');
@@ -72,14 +91,25 @@ class Students extends Component
             'lastname' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
+            'image' => 'image|max:1024',
         ]);
         if ($this->ids) {
             $student = Student::find($this->ids);
+            $publicId = '';
+            if ($this->image) {
+                if ($student->image) {
+                    Cloudder::destroyImage($student->image);
+                }
+                $imagePath = $this->image->getRealPath();
+                Cloudder::upload($imagePath, null);
+                $publicId = Cloudder::getPublicId();
+            }
             $student->update([
                 'firstname' => $this->firstname,
                 'lastname' => $this->lastname,
                 'email' => $this->email,
                 'phone' => $this->phone,
+                'image' => $publicId,
             ]);
             session()->flash('message', '投稿の編集に成功しました。');
             $this->resetInputFields();
